@@ -1,0 +1,7 @@
+##BarcodeID;SampleName;DNAbarcodes
+barcode01;wenr202488;miniCOI,18SV9,18SV4,28S
+barcode02;wenr202489;miniCOI,18SV9,18SV4,28S
+barcode03;wenr202497;miniCOI,18SV9,18SV4,28S
+barcode04;wenr202501;miniCOI,18SV9,18SV4,28S
+barcode05;G-Block;miniCOI,18SV9,18SV4,28S
+barcode06;MQ;miniCOI,18SV9,18SV4,28S

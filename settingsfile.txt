@@ -1,0 +1,95 @@
+#!/bin/bash
+
+#NAME OF ANALYSIS RUN 
+RunName=""
+
+## MAIL VARIABLE
+mail_user=""
+
+##MARKERS TO ANALYSE
+Targets=""
+
+##SLURM VARIABLES
+#Number of CPUs
+THREADS=15
+#set GPU to '1' to run Guppy on GPU, or set it to 'cpu' to make Guppy run on CPU. (or set it to '' to skip Guppy, not recommended)
+GPU='1'
+#change scheduled time per sample, change when using less/more modules (default: 120)
+timepersample=120
+
+##  MODULES TO RUN 
+##  options: all (default), Guppy,Porechop,QCtrimming,Clustering,Consensus,Blast,Taxonomy, None
+## 	Extra module to check quality fast5 files, only runs when RunModules='Poretools': Poretools
+##	Only run this if poretools is installed: https://poretools.readthedocs.io/en/latest/content/installation.html
+##  When running a module again, don't change RunName, the pipeline won't be able to find the necessary files without it.
+##  Example when wanting to run multiple modules, but not all: RunModules='QCtrimming,Clustering'
+RunModules="all"
+
+
+#Clustering modus
+#modus="all" #if multiple datasets, this will include all datasets in OutDir. Create a new outdir with the required datasets to prevent including other datasets.
+modus="one" #if one dataset same RunName, must be in same folder as original output
+
+## LOCATION VARIABLES
+FAST5Folder=""
+#Output directory for analysis results
+OutDir=""
+#Location of scripts used for pipeline
+workdir=""
+#Sample description location on HPC
+SampleDescription=""
+#File containing marker primer sequences
+PrimerFile=
+
+#Folder with scripts
+scripts=$workdir/scripts
+#NT_dmp contains nodes.dmp and names.dmp from NCBI
+NT_dmp=/lustre/shared/wfsr-databases/taxonomy
+#BLAST database
+DATABASE=/lustre/shared/wfsr-databases/BLASTdb/nt
+#Excluded nt sequences
+ExSeqids=$workdir/Excluded.NCBI.identifications.tsv
+#Excluded taxids
+ExTaxids=$workdir/Excluded.NCBI.taxids
+
+
+
+## ONLY CHANGE VARIABLES WHEN NEEDED
+# MinION settings
+MinionKit=""
+MinionFlowCell=""
+ExpansionKit=""
+Barcoding="TRUE"
+FAST5dirSize=4000
+
+# Porechop settings
+AdapterThreshold=80
+
+# Prinseq settings
+MinMaxLength="10-1100"
+TrimLeft=5
+TrimRight=5
+MinQualMean=12
+
+# CD-HIT-est settings
+#First clustering
+Ident1=0.93
+#Reclustering
+Ident2=1.00
+MinClustSize=1
+
+
+# Cutadapt
+Error=0.15
+
+# Blast
+Evalue=0.001
+Pident=90
+Qcov=90
+MaxTargetSeqs=100
+
+
+
+
+
+
