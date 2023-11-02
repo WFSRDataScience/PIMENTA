@@ -1,7 +1,7 @@
 # Pimenta 
 Pimenta is a pipeline for the rapid identification of species in forensic samples using MinION data. The pipeline consists of eight linked tools, and data analysis passes through 3 phases: 1) pre-processing the MinION data through read calling, demultiplexing, trimming sequencing adapters, quality trimming and filtering the reads, 2) clustering the reads, continued by MSA and consensus building per cluster, 3) reclustering of consensus sequences, followed by another MSA and consensus building per cluster,  4) Taxonomy identification with the use of a BLAST analysis. Pimenta makes use of the frequently-used software tools Cutadapt v1.16 (http://cutadapt.readthedocs.io/en/stable/guide.html), PRINSEQ v0.20.4 (http://prinseq.sourceforge.net/), BLAST+ (ftp://ftp.ncbi.nlm.nih.gov/blast/executables/blast+/LATEST/), Guppy 6.5,7, CD-HIT v4.6.7 (https://github.com/weizhongli/cdhit), Consensus v1.0, Krona v2.7.1 (https://github.com/marbl/Krona/wiki) and MAFFT v7.130 (https://mafft.cbrc.jp/alignment/software/).
  
-![alt text](https://raw.githubusercontent.com/WFSRDataScience/pimenta/master/DNA_metabarcoding.drawio.png?token=GHSAT0AAAAAACHFNE6G2VS2INC5MUA75K56ZKDO4CA)
+![alt text](https://raw.githubusercontent.com/WFSRDataScience/pimenta/master/DNA_metabarcoding.drawio.png?token=GHSAT0AAAAAACHFNE6G2VS2INC5MUA75K56ZKDO4CA) <br>
 <strong>Required programs</strong> <br>
 Mininconda has to be installed and loaded before installing Pimenta. <br>
 
