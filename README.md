@@ -21,12 +21,12 @@ The required R packages are automatically installed.
 <strong> Required perl packages</strong> <br> Bio::SeqIO, Bio::AlignIO <br>
 These are automatically installed with install.sh
 
-<string>Required databases</strong><br>
+<strong>Required databases</strong><br>
 Taxdump database, download and extract the files in a desired location: https://ftp.ncbi.nlm.nih.gov/pub/taxonomy/new_taxdump/ <br>
 The variable NT_dmp in the settingsfile is where you specify where you extracted the dmp files to. <br>
 NCBI NT database, specify the location in DATABASE variable in settingsfile. <br>
 ```
-update_blastdb.pl --decompress nt`
+update_blastdb.pl --decompress nt
 ```
 
 <strong>General usage</strong> </br>
