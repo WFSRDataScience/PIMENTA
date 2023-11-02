@@ -1,11 +1,10 @@
-# Pimenta DNA metabarcoding combined clustering
+# Pimenta 
 This pipeline combines cluster data from multiple datasets/samples analysed with the DNA Metabarcoding pipeline (https://git.wur.nl/vorst016/hpc-dna-metabarcoding-minion-gpu-parallel) and reclusters the consensus sequences from these datasets/samples. 
 New consensus sequences are created from these new clusters and the taxonomy is identified with a BLAST analysis. 
 
-![alt text](https://git.wur.nl/vorst016/pimenta/-/raw/master/DNA_metabarcoding.drawio.png)
-
+![alt text](https://github.com/WFSRDataScience/pimenta/-/raw/master/DNA_metabarcoding.drawio.png)
 <strong>DNA metabarcoding</strong> <br>
-Pimenta is a pipeline for the rapid identification of species in forensic samples using MinION data. The pipeline consists of eight linked tools, and data analysis passes through 3 phases: 1) pre-processing the MinION data through read calling, demultiplexing, trimming sequencing adapters, quality trimming and filtering the reads, 2) clustering the reads, continued by MSA and consensus building per cluster, 3) Taxonomy identification with the use of a BLAST analysis. The DNAmetabarcoding pipeline makes use of the frequently-used software tools Cutadapt v1.16 (http://cutadapt.readthedocs.io/en/stable/guide.html), PRINSEQ v0.20.4 (http://prinseq.sourceforge.net/), Porechop (https://github.com/rrwick/Porechop), BLAST+ (ftp://ftp.ncbi.nlm.nih.gov/blast/executables/blast+/LATEST/), Guppy 4.0.11, CD-HIT v4.6.7 (https://github.com/weizhongli/cdhit), Consensus v1.0, Krona v2.7.1 (https://github.com/marbl/Krona/wiki) and MAFFT v7.130 (https://mafft.cbrc.jp/alignment/software/).
+Pimenta is a pipeline for the rapid identification of species in forensic samples using MinION data. The pipeline consists of eight linked tools, and data analysis passes through 3 phases: 1) pre-processing the MinION data through read calling, demultiplexing, trimming sequencing adapters, quality trimming and filtering the reads, 2) clustering the reads, continued by MSA and consensus building per cluster, 3) reclustering of consensus sequences, followed by another MSA and consensus building per cluster,  4) Taxonomy identification with the use of a BLAST analysis. Pimenta makes use of the frequently-used software tools Cutadapt v1.16 (http://cutadapt.readthedocs.io/en/stable/guide.html), PRINSEQ v0.20.4 (http://prinseq.sourceforge.net/), BLAST+ (ftp://ftp.ncbi.nlm.nih.gov/blast/executables/blast+/LATEST/), Guppy 6.5,7, CD-HIT v4.6.7 (https://github.com/weizhongli/cdhit), Consensus v1.0, Krona v2.7.1 (https://github.com/marbl/Krona/wiki) and MAFFT v7.130 (https://mafft.cbrc.jp/alignment/software/).
  
 
 <strong>Required programs</strong> <br>
@@ -16,14 +15,11 @@ First clone the pipeline into a chosen directory:
 ```
 git clone https://github.com/WFSRDataScience/Pimenta.git
 ```
-
 To install Pimenta:<br>
 ```
 cd pimenta
 bash install.sh 
 ```
-
-
 <strong>Required R packages</strong> <br>dplyr, readr, stringi, taxonomizr, stringr and data.table are required for Taxonomic_summary.R <br>
 The required R packages are automatically installed.
 
@@ -34,7 +30,9 @@ These are automatically installed with install.sh
 Taxdump database, download and extract the files in a desired location: https://ftp.ncbi.nlm.nih.gov/pub/taxonomy/new_taxdump/ <br>
 The variable NT_dmp in the settingsfile is where you specify where you extracted the dmp files to. <br>
 NCBI NT database, specify the location in DATABASE variable in settingsfile. <br>
-`update_blastdb.pl --decompress nt`
+```
+update_blastdb.pl --decompress nt`
+```
 
 <strong>General usage</strong> </br>
 The basic command to run the example analysis, after editing the settings in settingsfile.txt: 
@@ -62,7 +60,7 @@ bash START_recluster.sh settingsfile.txt
 
 
 <strong>Output files</strong> <br>
-By default, the output of the DNAMetabarcoding pipeline is written to /```<OutDir>```/```<RunName>``` <br>
+By default, the output of Pimenta is written to /```<OutDir>```/```<RunName>``` <br>
 The taxonomy and QC output is written to /```<OutDir>```/```<RunName>```/Taxonomy_per_sample_```<ident2>```<br>
 
 
