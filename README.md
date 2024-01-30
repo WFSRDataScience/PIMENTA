@@ -1,18 +1,18 @@
 # PIMENTA 
-PIMENTA is a pipeline for the rapid identification of species in forensic samples using MinION data. The pipeline consists of eight linked tools, and data analysis passes through 3 phases: 1) pre-processing the MinION data through read calling, demultiplexing, trimming sequencing adapters, quality trimming and filtering the reads, 2) clustering the reads, continued by MSA and consensus building per cluster, 3) reclustering of consensus sequences, followed by another MSA and consensus building per cluster,  4) Taxonomy identification with the use of a BLAST analysis. Pimenta makes use of the frequently-used software tools Cutadapt v1.16 (http://cutadapt.readthedocs.io/en/stable/guide.html), PRINSEQ v0.20.4 (http://prinseq.sourceforge.net/), BLAST+ (ftp://ftp.ncbi.nlm.nih.gov/blast/executables/blast+/LATEST/), Guppy 6.5,7, CD-HIT v4.6.7 (https://github.com/weizhongli/cdhit), Consensus v1.0, Krona v2.7.1 (https://github.com/marbl/Krona/wiki) and MAFFT v7.130 (https://mafft.cbrc.jp/alignment/software/).
+PIMENTA is a pipeline for the rapid identification of species in forensic samples using MinION data. The pipeline consists of eight linked tools, and data analysis passes through 3 phases: 1) pre-processing the MinION data through read calling, demultiplexing, trimming sequencing adapters, quality trimming and filtering the reads, 2) clustering the reads, continued by MSA and consensus building per cluster, 3) reclustering of consensus sequences, followed by another MSA and consensus building per cluster,  4) Taxonomy identification with the use of a BLAST analysis. PIMENTA makes use of the frequently-used software tools Cutadapt v1.16 (http://cutadapt.readthedocs.io/en/stable/guide.html), PRINSEQ v0.20.4 (http://prinseq.sourceforge.net/), BLAST+ (ftp://ftp.ncbi.nlm.nih.gov/blast/executables/blast+/LATEST/), Guppy 6.5,7, CD-HIT v4.6.7 (https://github.com/weizhongli/cdhit), Consensus v1.0, Krona v2.7.1 (https://github.com/marbl/Krona/wiki) and MAFFT v7.130 (https://mafft.cbrc.jp/alignment/software/).
  
-![alt text](https://github.com/WFSRDataScience/pimenta/blob/master/DNA_metabarcoding.drawio.png?raw=true) <br>
+![alt text](https://github.com/WFSRDataScience/PIMENTA/blob/master/DNA_metabarcoding.drawio.png?raw=true) <br>
 <strong>Required programs</strong> <br>
-Mininconda has to be installed and loaded before installing Pimenta. <br>
+Mininconda has to be installed and loaded before installing PIMENTA. <br>
 
 <strong>Installing the pipeline</strong> <br>
 First clone the pipeline into a chosen directory:
 ```
-git clone https://github.com/WFSRDataScience/Pimenta.git
+git clone https://github.com/WFSRDataScience/PIMENTA.git
 ```
-To install Pimenta:<br>
+To install PIMENTA:<br>
 ```
-cd pimenta
+cd PIMENTA
 bash install.sh 
 ```
 <strong>Required R packages</strong> <br>dplyr, readr, stringi, taxonomizr, stringr and data.table are required for Taxonomic_summary.R <br>
@@ -44,7 +44,7 @@ bash START_recluster.sh settingsfile.txt
 ```<mail-user>```           Email address to receive updates about the job and results from the analysis <br>
 ```<modus>```   "all" to analyse all datasets within OutDir or "one" to analyse dataset with same RunName and OutDir <br>
 ```<OutDir>```              Path where the output of the DNA metabarcoding analysis is placed <br>
-```<workdir>```             Location of the Pimenta scripts on the HPC server <br>
+```<workdir>```             Location of the PIMENTA scripts on the HPC server <br>
 ```<THREADS>```             Total CPU threads <br>
 
 
@@ -55,7 +55,7 @@ bash START_recluster.sh settingsfile.txt
 
 
 <strong>Output files</strong> <br>
-By default, the output of Pimenta is written to /```<OutDir>```/```<RunName>``` <br>
+By default, the output of PIMENTA is written to /```<OutDir>```/```<RunName>``` <br>
 The taxonomy and QC output is written to /```<OutDir>```/```<RunName>```/Taxonomy_per_sample_```<ident2>```<br>
 
 
