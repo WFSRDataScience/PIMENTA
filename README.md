@@ -3,7 +3,8 @@ PIMENTA is a pipeline for the rapid identification of species in forensic sample
  
 ![alt text](https://github.com/WFSRDataScience/PIMENTA/blob/main/DNA_metabarcoding.drawio.png?raw=true) <br>
 <strong>Required programs</strong> <br>
-Mininconda has to be installed and loaded before installing PIMENTA. <br>
+Mininconda and has to be installed and loaded before installing PIMENTA. <br>
+Guppy == 6.5.7 <br>
 
 <strong>Installing the pipeline</strong> <br>
 First clone the pipeline into a chosen directory:
