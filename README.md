@@ -1,9 +1,10 @@
 # PIMENTA 
-PIMENTA is a pipeline for the rapid identification of species in forensic samples using MinION data. The pipeline consists of eight linked tools, and data analysis passes through 3 phases: 1) pre-processing the MinION data through read calling, demultiplexing, trimming sequencing adapters, quality trimming and filtering the reads, 2) clustering the reads, continued by MSA and consensus building per cluster, 3) reclustering of consensus sequences, followed by another MSA and consensus building per cluster,  4) Taxonomy identification with the use of a BLAST analysis. PIMENTA makes use of the frequently-used software tools Cutadapt v4.2 (http://cutadapt.readthedocs.io/en/stable/guide.html), PRINSEQ v0.20.4 (http://prinseq.sourceforge.net/), BLAST+ (ftp://ftp.ncbi.nlm.nih.gov/blast/executables/blast+/LATEST/), Guppy 6.5,7, CD-HIT v4.8.1 (https://github.com/weizhongli/cdhit), Consensus v1.0, Krona v2.7.1 (https://github.com/marbl/Krona/wiki) and MAFFT v7.130 (https://mafft.cbrc.jp/alignment/software/).
+PIMENTA is a pipeline for the rapid identification of species in forensic samples using MinION data. The pipeline consists of eight linked tools, and data analysis passes through 3 phases: 1) pre-processing the MinION data through read calling, demultiplexing, trimming sequencing adapters, quality trimming and filtering the reads, 2) clustering the reads, continued by MSA and consensus building per cluster, 3) reclustering of consensus sequences, followed by another MSA and consensus building per cluster,  4) Taxonomy identification with the use of a BLAST analysis. PIMENTA makes use of the frequently-used software tools Cutadapt v4.2 (http://cutadapt.readthedocs.io/en/stable/guide.html), PRINSEQ v0.20.4 (http://prinseq.sourceforge.net/), BLAST+ (ftp://ftp.ncbi.nlm.nih.gov/blast/executables/blast+/LATEST/), Guppy 6.5,7, CD-HIT v4.8.1 (https://github.com/weizhongli/cdhit), Consensus v1.0, Krona v2.7.1 (https://github.com/marbl/Krona/wiki) and MAFFT v7.130 (https://mafft.cbrc.jp/alignment/software/). <br>
  
+If you use PIMENTA, please cite: https://doi.org/10.1101/2024.02.14.580249 <br>
+
 ![alt text](https://github.com/WFSRDataScience/PIMENTA/blob/main/DNA_metabarcoding.drawio.png?raw=true) <br>
 
-If you use PIMENTA, please cite: https://doi.org/10.1101/2024.02.14.580249
 
 <strong>Required programs</strong> <br>
 Mininconda and has to be installed and loaded before installing PIMENTA. <br>
