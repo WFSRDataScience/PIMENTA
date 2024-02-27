@@ -61,6 +61,10 @@ MinionFlowCell=""
 ExpansionKit=""
 Barcoding="TRUE"
 FAST5dirSize=4000
+#testdata settings
+#MinionKit="SQK-PBK004"
+#MinionFlowCell="FLO-FLG001"
+#ExpansionKit="none"
 
 #minimum read count for each sample, to include sample
 FastqFolderSize=19
