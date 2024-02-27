@@ -17,11 +17,14 @@ mkdir -p $OutFolderName
 source ~/.bashrc
 #conda info --envs
 #. $CONDA_PREFIX/etc/profile.d/conda.sh
+conda deactivate 
 conda activate pimenta
 module load R
-printf "$scripts/Pipeline_HPC_recluster.sh $RunName $OutDir $OutFolderName $Ident2 $MinClustSize $PrimerFile $Error $Evalue $Qcov $Pident $MaxTargetSeqs $THREADS $RunModules $NT_dmp $ExTaxids $Targets $ExSeqids $modus $DATABASE\n"
+if [ -z "$filtertax" ]; then
+	filtertax="notaxfilter"
+fi
+printf "$scripts/Pipeline_HPC_recluster.sh $RunName $OutDir $OutFolderName $Ident2 $MinClustSize2 $PrimerFile $Error $Evalue $Qcov $Pident $MaxTargetSeqs $THREADS $RunModules $NT_dmp $ExTaxids $Targets $ExSeqids $modus $DATABASE $filtertax $scripts\n"
 
-printf "$scripts"
-time bash $scripts/Pipeline_HPC_recluster.sh $RunName $OutDir $OutFolderName $Ident2 $MinClustSize $PrimerFile $Error $Evalue $Qcov $Pident $MaxTargetSeqs $THREADS $RunModules $NT_dmp $ExTaxids $Targets $ExSeqids $modus $DATABASE $scripts
+time bash $scripts/Pipeline_HPC_recluster.sh $RunName $OutDir $OutFolderName $Ident2 $MinClustSize2 $PrimerFile $Error $Evalue $Qcov $Pident $MaxTargetSeqs $THREADS $RunModules $NT_dmp $ExTaxids $Targets $ExSeqids $modus $DATABASE $filtertax $scripts
 
 

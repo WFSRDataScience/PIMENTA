@@ -23,14 +23,14 @@ Targets=${16}
 ExSeqids=${17}
 modus=${18}
 DATABASE=${19}
-scripts=${20}
+filtertax=${20}
+scripts=${21}
 
 if [[ "$modus" == "one" ]]; then
 	files=$(find $OutFolderName/barcode*.*/ClustCons/multi-seq/*.combined.fasta)
 else
 	files=$(find $OutDir/*/barcode*.*/ClustCons/multi-seq/*.combined.fasta)
 fi
-Zooplankton="False"
 printf "accessionTaxa $accessionTaxa"
 printf "DB $DATABASE\n"
 printf "scripts $scripts\n"
@@ -156,10 +156,14 @@ function GetTaxPerSample(){
 	for Sample in $files; do
                 clusterid=0
 		SampleName=$(basename $Sample | awk -F '.' '{print $2}' | tr -d '\n')
-		echo $SampleName
+		if  [ "$SampleName" == "combined" ]; then 
+			SampleName=$(basename $Sample | awk -F '.' '{print $1}' | tr -d '\n')
+		fi
+		echo "Sample: $SampleName"
 		#retrieve all within a marker 
 		grep "$SampleName" $OutFolderName/$RunName.ClusterContent.tsv | tr ' ' ':' | grep -vP 'NA\tNA\tNA\tNA'| awk -F '\t' '{print $1"\t"$4"\t"$5"\t"$6"\t"$7"\t"$8}'  > $OutFolderName/Taxonomy_per_sample_$Ident1/$SampleName.tmp
    		printf "#DNA_barcode\tTaxid\tLevel\tTaxonomy\tLineage\tReadcount\n"  > $OutFolderName/Taxonomy_per_sample_$Ident1/$SampleName.count.tmp
+		cat $OutFolderName/Taxonomy_per_sample_$Ident1/$SampleName.tmp
 		while read -r marker taxid level tax lineage barcodes; do
 			let clusterid++
 			readcount=0
@@ -170,9 +174,9 @@ function GetTaxPerSample(){
 					readcount=$((readcount+bcount))
 				fi
 			done	
-			if [ $Zooplankton == "True" ]; then
+			if [ "$filtertax" != "notaxfilter" ]; then
 			
-			if [[ "$lineage" == *"Metazoa"* ]] ; then
+			if [ "$lineage" == *"$filtertax"* ] ; then
     	                	printf "${marker}.${clusterid}\t$taxid\t$level\t$tax\t$lineage\t$readcount\n" | tr ':' ' ' >> $OutFolderName/Taxonomy_per_sample_$Ident1/$SampleName.count.tmp
 			fi
 			else

@@ -62,8 +62,8 @@ ExpansionKit=""
 Barcoding="TRUE"
 FAST5dirSize=4000
 
-# Porechop settings
-AdapterThreshold=80
+#minimum read count for each sample, to include sample
+FastqFolderSize=19
 
 # Prinseq settings
 MinMaxLength="10-1100"
@@ -74,9 +74,10 @@ MinQualMean=12
 # CD-HIT-est settings
 #First clustering
 Ident1=0.93
+MinClustSize=5
 #Reclustering
 Ident2=1.00
-MinClustSize=1
+MinClustSize2=1
 
 
 # Cutadapt
@@ -87,6 +88,8 @@ Evalue=0.001
 Pident=90
 Qcov=90
 MaxTargetSeqs=100
+#keep all results in $filtertax, for example all "Metazoa" or if you want to keep everything, leave empty "" to keep everything
+filtertax="Metazoa"
 
 
 

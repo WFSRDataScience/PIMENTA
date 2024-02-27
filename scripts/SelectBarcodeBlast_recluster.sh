@@ -25,6 +25,9 @@ nt=true #Use nt database instead of custom barcode databases
 folderDB=$(dirname $DATABASE)
 export BLASTDB=$BLASTDB:$folderDB
 
+echo $CONDA_DEFAULT_ENV
+echo $CONDA_PREFIX
+conda info 
 
 ####Select reads containing the DNA forward and reverse barcode primers. Primers are also removed.
 function SelectBarcodeBlast(){
@@ -37,8 +40,9 @@ function SelectBarcodeBlast(){
 	###ADD what to do with EMPTY files
 	printf "Runnning SelectBarcodeBlast"
 	printf "DNA barcode target: $TARGET\n"
-
+		if [ -f "$PrimerFile" ]; then
 		# Create two strings for the cutadapt statement.
+		cat $PrimerFile | grep "^$TARGET;" | grep "forward" | awk -F\; '{print $2}' 
 		Primers=$(cat $PrimerFile | grep "^$TARGET;" | grep "forward" | awk -F\; '{print $2}' | tr "[Ii]" "[Nn]" | sed 's/,*$//' | sed 's/,/ -b  /g' | sed -e 's/^/ -g /' | tr -d '\n')
 		PrimersRC=$(cat $PrimerFile | grep "^$TARGET;" | grep "reverse" | awk -F\; '{print $2}' | tr "[ATGCUatgcuNnYyRrSsWwKkMmBbDdHhVvIi]" "[TACGAtacgaNnRrYySsWwMmKkVvHhDdBbNn]" | rev | sed 's/,*$//' | tr -d '\n')
 		#PrimersRC=$(cat $PrimerFile | grep "^$TARGET;" | grep "reverse" | awk -F\; '{print $2}' | tr "[Ii]" "[Nn]" | sed 's/,*$//' | tr -d '\n')
@@ -64,6 +68,10 @@ function SelectBarcodeBlast(){
 			else
 				printf "\n$OutFolderName/Barcodes/$RunName.$TARGET.PS.fasta does not exist, or is empty\n"
 		fi
+		else
+		printf "Primerfile is missing: $PrimerFile\n"
+		exit 1
+		fi
 	done
 }
 
@@ -71,7 +79,8 @@ function SelectBarcodeBlast(){
 function SummaryTax_reads(){
 	rm -r --force $OutFolderName/Taxonomy_$Ident1
 	mkdir -p $OutFolderName/Taxonomy_$Ident1
-
+	python --version
+	which python
 	python $scripts/Taxonomy.py -i  $OutFolderName/BLAST/ -o $OutFolderName/Taxonomy_$Ident1/ -p $NT_dmp/ -e $ExSeqids
 	printf "qseqid\tTAXID\tTaxonomic Level\tTaxonomic Name\tNumber of Top Hits\tLineage\tReads\tMarker\n" > $OutFolderName/Taxonomy_$Ident1/$RunName.Overview.summary
 	for i in $OutFolderName/Taxonomy_$Ident1/*.Taxonomy.summary; do
@@ -105,5 +114,5 @@ if [[ "$Runmodules" == *"all"* ]] || [[ "$Runmodules" == *"blast"* ]] || [[ "$Ru
 fi
 if [[ "$Runmodules" == *"all"* ]] || [[ "$Runmodules" == *"axonomy"* ]] ; then
 	SummaryTax_reads
-#	Create_xslx
+	Create_xslx
 fi 

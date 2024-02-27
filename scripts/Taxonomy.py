@@ -1,8 +1,11 @@
+#!/usr/bin/env python3
 import sys
 import os
 import taxopy
 import pandas as pd
 import argparse
+
+print(sys.path)
 #replaces Taxonomy.R, retrieves taxonomy from blast output
 #Does this for whole dir instead for each marker/target
 #Retrieves cluster size (from cluster name) and seq length from fasta

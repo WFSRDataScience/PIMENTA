@@ -1,0 +1,7 @@
+##BarcodeID;SampleName;DNAbarcodes
+barcode03;Mix1;miniCOI,18SV9,18SV4
+barcode04;Mix2;miniCOI,18SV9,18SV4
+barcode05;Mix3;miniCOI,18SV9,18SV4
+barcode06;Mix4;miniCOI,18SV9,18SV4
+barcode07;Mix5;miniCOI,18SV9,18SV4
+
