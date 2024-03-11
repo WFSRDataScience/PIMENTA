@@ -27,5 +27,3 @@ mamba install -n pimenta -y -c bioconda taxopy krona
 conda activate pimenta
 ktUpdateTaxonomy.sh
 
-cd scripts/Porechop/
-make
