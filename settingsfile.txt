@@ -18,7 +18,7 @@ GPU='1'
 timepersample=120
 
 ##  MODULES TO RUN 
-##  options: all (default), Guppy,Porechop,QCtrimming,Clustering,Consensus,Blast,Taxonomy, None
+##  options: all (default), Guppy,QCtrimming,Clustering,Consensus,Blast,Taxonomy, None
 ## 	Extra module to check quality fast5 files, only runs when RunModules='Poretools': Poretools
 ##	Only run this if poretools is installed: https://poretools.readthedocs.io/en/latest/content/installation.html
 ##  When running a module again, don't change RunName, the pipeline won't be able to find the necessary files without it.
