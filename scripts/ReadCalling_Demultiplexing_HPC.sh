@@ -9,15 +9,13 @@ OutDir=${3}
 Barcoding=${4}
 MinionKit=${5}
 MinionFlowCell=${6}
-AdapterThreshold=${7}
-THREADS=${8}
-SampleDescription=${9}
-GPU=${10}
-Guppy_demultiplexed=${11}
-ExpansionKit=${12}
-mail_user=${13}
+THREADS=${7}
+SampleDescription=${8}
+GPU=${9}
+Guppy_demultiplexed=${10}
+ExpansionKit=${11}
+mail_user=${12}
 
-printf "$AdapterThreshold"
 
 printf "$GPU"
 

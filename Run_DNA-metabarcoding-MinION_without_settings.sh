@@ -71,7 +71,7 @@ module load slurm gcc/11.2.0
 ### check if GPU argument is given, if not, don't run Guppy
 if [[ "$RunModules" == *"all"* ]] || [[ "$RunModules" == *"uppy"* ]] ; then
 	start=$SECONDS
-	time bash $scripts/ReadCalling_Demultiplexing_HPC.sh $RunName $FAST5Folder $OutDir $Barcoding $MinionKit $MinionFlowCell $AdapterThreshold $THREADS $SampleDescription $GPU $Guppy_demultiplexed $ExpansionKit $mail_user
+	time bash $scripts/ReadCalling_Demultiplexing_HPC.sh $RunName $FAST5Folder $OutDir $Barcoding $MinionKit $MinionFlowCell $THREADS $SampleDescription $GPU $Guppy_demultiplexed $ExpansionKit $mail_user
 	duration=$(( SECONDS - start ))
 fi
 
@@ -91,7 +91,6 @@ if ! command -v sinfo &> /dev/null
 	echo $MIDfolder
 	MID=$(basename $MIDfolder)
 	echo "Task ID: $SLURM_ARRAY_TASK_ID \t Barcode: $MID"
-	time bash $scripts/RemoveMinIONAdaptersGuppy.sh $RunName $FAST5Folder $OutFolderName $AdapterThreshold $THREADS $SampleDescription $Guppy_demultiplexed $Barcoding $scripts $MID
 	time bash $scripts/Pipeline_HPC.sh $RunName $OutDir $OutFolderName $MinMaxLength $TrimLeft $TrimRight $MinQualMean $Ident1 $MinClustSize $SampleDescription $THREADS $RunModules $scripts $MID
 	done
 else
