@@ -65,8 +65,6 @@ if [[ "$RunModules" == *"oretools"* ]] ; then
 	time bash $scripts/RunPoretools.sh $OutFolderName $FAST5Folder $RunName $THREADS &
 fi
 
-module unload slurm gcc
-module load slurm gcc/11.2.0
 
 ### check if GPU argument is given, if not, don't run Guppy
 if [[ "$RunModules" == *"all"* ]] || [[ "$RunModules" == *"uppy"* ]] ; then
