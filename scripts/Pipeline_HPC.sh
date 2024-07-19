@@ -98,8 +98,8 @@ QCtrimming(){
 	printf "prinseq-lite.pl -fastq $MIDFolderName/$MID.$SampleName.adapter_trim.fastq -trim_left $TrimLeft -trim_right $TrimRight -range_len $MinMaxLength -min_qual_mean $MinQualMean -out_good $MIDFolderName/$MID.$SampleName.QC -out_bad null\n"
 	prinseq-lite.pl -fastq $MIDFolderName/$MID.$SampleName.QC.fastq -graph_stats ld,qd,ns -graph_data $MIDFolderName/$MID.$SampleName.QC.gd -out_good null -out_bad null
 	printf "prinseq-lite.pl -fastq $MIDFolderName/$MID.$SampleName.QC.fastq -graph_stats ld,qd,ns -graph_data $MIDFolderName/$MID.$SampleName.QC.gd -out_good null -out_bad null\n" 
-	prinseq-graphs.pl -i $MIDFolderName/$MID.$SampleName.QC.gd -html_all -o $MIDFolderName/$MID.$SampleName.QC
-	cp $MIDFolderName/$MID.$SampleName.QC.html $OutFolderName/Taxonomy/$MID.$SampleName.QC.html
+	#prinseq-graphs.pl -i $MIDFolderName/$MID.$SampleName.QC.gd -html_all -o $MIDFolderName/$MID.$SampleName.QC
+	#cp $MIDFolderName/$MID.$SampleName.QC.html $OutFolderName/Taxonomy/$MID.$SampleName.QC.html
 	###Convert fastq to fasta
 	cat $MIDFolderName/$MID.$SampleName.QC.fastq | awk 'NR%4==1{printf ">%s\n", substr($0,2)}NR%4==2{print}' > $MIDFolderName/$MID.$SampleName.QC.fasta
 
