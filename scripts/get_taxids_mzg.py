@@ -1,5 +1,6 @@
 """
-
+load the conda environment before using it with:
+conda activate pimenta
 
 usage: get_taxids_mzg.py [-h] -i INPUT -p DB -o OUTPUT
 
